@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#B54646"/> <!-- Cor do fundo -->
+    <solid android:color="#F63333"/> <!-- Cor do fundo -->
     <corners android:radius="16dp"/> <!-- Raio dos cantos -->
 </shape>

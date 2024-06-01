@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.perfil.PerfilFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp"
+
+            tools:ignore="UselessLeaf">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="218dp"
+                android:src="@drawable/fisico" />
+
+
+            <EditText
+                android:id="@+id/inputLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:ems="10"
+                android:hint="Buscar"
+                android:inputType="text"
+                android:minHeight="48dp" />
+
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="Buscar" />
+            <Button
+                android:id="@+id/insert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="Gravar" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+
+                    <!-- Cabeçalho da tabela -->
+
+                    <!-- Linha 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/purple_700"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Código"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:background="@drawable/border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Nome"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:background="@drawable/border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:padding="8dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Prancha"
+                            android:textColor="#000000"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/back_white_and_border"
+                            />
+                    </LinearLayout>
+
+
+                    <!-- Linha 2 -->
+
+                    <!-- Adicione mais linhas conforme necessário -->
+
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

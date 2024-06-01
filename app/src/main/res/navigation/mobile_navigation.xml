@@ -18,8 +18,14 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.app_sd.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_activities"
+        android:name="com.example.app_sd.ui.activities.ActivitiesFragment"
+        android:label="@string/menu_activities"
+        tools:layout="@layout/fragment_activities" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.app_sd.ui.perfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>
