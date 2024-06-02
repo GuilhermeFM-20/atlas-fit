@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:id="@+id/nav_insert_activities"
+        android:name="com.example.app_sd.ui.activities.ActivitiesInsertFragment"
+        android:label="@string/menu_activities"
+        tools:layout="@layout/fragment_activities_insert" />
+
+    <fragment
         android:id="@+id/nav_activities"
         android:name="com.example.app_sd.ui.activities.ActivitiesFragment"
         android:label="@string/menu_activities"

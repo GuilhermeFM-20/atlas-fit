@@ -30,7 +30,7 @@ public class PerfilFragment extends Fragment {
 
         Spinner spinner = binding.combo;
 
-        String[] items = {"Sedentário", "Levemente Ativo", "Moderadamente Ativo", "Muito Ativo", "Extremamente Ativo"};
+        String[] items = {"Selecione uma opção...","Sedentário", "Levemente Ativo", "Moderadamente Ativo", "Muito Ativo", "Extremamente Ativo"};
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
@@ -42,10 +42,7 @@ public class PerfilFragment extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Pegando o item selecionado
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                // Exibindo um toast com o item selecionado
-                Toast.makeText(parent.getContext(), "Selecionado: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
 
             @Override

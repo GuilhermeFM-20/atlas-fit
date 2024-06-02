@@ -25,8 +25,8 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="213dp"
-                android:src="@drawable/comercial" />
+                android:layout_height="185dp"
+                android:src="@drawable/equipe" />
 
             <EditText
                 android:id="@+id/inputName"

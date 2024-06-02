@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentActivitiesBinding;
 import com.example.app_sd.databinding.FragmentActivitiesInsertBinding;
 
@@ -28,9 +31,10 @@ public class ActivitiesInsertFragment extends Fragment {
 
         ActivitiesViewModel homeViewModel = new ViewModelProvider(this).get(ActivitiesViewModel.class);
 
+
         Spinner spinner = binding.tipo;
 
-        String[] items = {"Aeróbica", "Musculação", "Flexibilidade", "Equilíbrio"};
+        String[] items = {"Selecione uma opção...","Aeróbica", "Musculação", "Flexibilidade", "Equilíbrio"};
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
@@ -44,8 +48,7 @@ public class ActivitiesInsertFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Pegando o item selecionado
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                // Exibindo um toast com o item selecionado
-                Toast.makeText(parent.getContext(), "Selecionado: " + selectedItem, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -56,7 +59,7 @@ public class ActivitiesInsertFragment extends Fragment {
 
         Spinner spinner2 = binding.intensidade;
 
-        String[] items2 = {"Baixa", "Moderada", "Alta"};
+        String[] items2 = {"Selecione uma opção...","Baixa", "Moderada", "Alta"};
 
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items2);
@@ -70,8 +73,6 @@ public class ActivitiesInsertFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Pegando o item selecionado
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                // Exibindo um toast com o item selecionado
-                Toast.makeText(parent.getContext(), "Selecionado: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
 
             @Override
