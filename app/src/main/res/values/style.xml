@@ -1,0 +1,6 @@
+<resources>
+    <style name="MenuItemStyle">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+</resources>

@@ -1,7 +1,10 @@
 package com.example.app_sd.ui.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,10 @@ public class ActivitiesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        int id = sharedPreferences.getInt("USER_ID", -1);
+        Log.i("EXTRA_ID PERFIL",""+id);
 
         binding = FragmentActivitiesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
