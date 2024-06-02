@@ -50,7 +50,7 @@ public class ApiService{
     public String request(String method,String urlString, String jsonInputString) throws Exception {
         try {
             URL url = new URL(this.baseUrl + urlString);
-            Log.i("Rota","Method: "+method+" - "+ this.baseUrl + endpoint);
+            Log.i("Rota","Method: "+method+" - "+ this.baseUrl + urlString);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod(method);
             conn.setConnectTimeout(TIMEOUT);

@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment {
                 Intent intent = new Intent(requireActivity(), MainActivity.class);
                 SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("USER_ID", 12345);
+                editor.putInt("USER_ID", 3);
                 editor.apply();
                 startActivity(intent);
             }

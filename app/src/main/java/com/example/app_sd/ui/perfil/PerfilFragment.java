@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,11 +24,20 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.app_sd.MyApp;
 import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentPerfilBinding;
+import com.example.app_sd.service.ApiService;
+import com.example.app_sd.service.HttpServices;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class PerfilFragment extends Fragment {
 
     private FragmentPerfilBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -65,6 +76,43 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Nada a fazer
+            }
+        });
+
+
+
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(() -> {
+            ApiService api = new ApiService();
+            try {
+                SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+                int idUser = sharedPreferences2.getInt("USER_ID", -1);
+                String response = api.request("GET","/"+idUser, null);
+                getActivity().runOnUiThread(() -> {
+                    JSONObject jsonObject = null;
+                    String name = null;
+                    String email = null;
+
+                    try {
+                        jsonObject = new JSONObject(response);
+                        name = jsonObject.getString("name");
+                        email = jsonObject.getString("email");
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    EditText inputName = (EditText) getActivity().findViewById(R.id.inputName);
+                    EditText inputEmail = (EditText) getActivity().findViewById(R.id.inputEmail);
+
+                    inputName.setText(name);
+                    inputEmail.setText(email);
+
+
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+
             }
         });
 
