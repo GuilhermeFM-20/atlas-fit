@@ -36,6 +36,7 @@ import java.util.concurrent.Executors;
 public class PerfilFragment extends Fragment {
 
     private FragmentPerfilBinding binding;
+    protected String prefix = "/users/";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -89,7 +90,7 @@ public class PerfilFragment extends Fragment {
             try {
                 SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
                 int idUser = sharedPreferences2.getInt("USER_ID", -1);
-                String response = api.request("GET","/"+idUser, null);
+                String response = api.request("GET",this.prefix+idUser, null);
                 getActivity().runOnUiThread(() -> {
                     JSONObject jsonObject = null;
                     String name = null;
