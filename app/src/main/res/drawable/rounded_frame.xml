@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#F63333"/> <!-- Cor do fundo -->
+    <gradient android:angle="125"
+        android:centerColor="#771719"
+        android:endColor="#60131E"
+        android:startColor="#7E282D"
+        android:type="linear"></gradient>
     <corners android:radius="16dp"/> <!-- Raio dos cantos -->
+
 </shape>

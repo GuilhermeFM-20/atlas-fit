@@ -141,9 +141,9 @@ public class ActivitiesFragment extends Fragment {
                                     String idClicado = ((TextView) v).getText().toString();
 
                                     // Inicie uma nova Activity para exibir os detalhes com base no id clicado
-                                    Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
-                                    intent.putExtra("id", idClicado);
-                                    startActivity(intent);
+//                                    Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+//                                    intent.putExtra("id", idClicado);
+//                                    startActivity(intent);
                                 });
 
                                 Log.e("ActivitiesFragment", "CHEGOU AQUI:"+rowLayout);

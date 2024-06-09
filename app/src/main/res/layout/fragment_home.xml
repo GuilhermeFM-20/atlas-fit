@@ -102,10 +102,7 @@
                 android:layout_height="@dimen/height"
                 android:layout_margin="20px"
                 android:background="@drawable/rounded_frame">
-                <!-- Linha de 20px na parte superior -->
 
-
-                <!-- Título -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -114,44 +111,13 @@
                     android:text="Pernas"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textStyle="bold" /> <!-- Cor do texto alterada para preto -->
-
-                <!-- Linha de 20px na parte superior -->
+                    android:textStyle="bold" />
                 <View
                     android:layout_width="290dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
                     android:background="#000000" />
-                <!-- Adicione aqui outros elementos dentro do FrameLayout -->
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height"
-                android:layout_margin="20px"
-                android:background="@drawable/rounded_frame">
-                <!-- Linha de 20px na parte superior -->
-
-
-                <!-- Título -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:text="Pernas"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" /> <!-- Cor do texto alterada para preto -->
-
-                <!-- Linha de 20px na parte superior -->
-                <View
-                    android:layout_width="290dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:background="#000000" />
-                <!-- Adicione aqui outros elementos dentro do FrameLayout -->
             </FrameLayout>
 
         </LinearLayout>

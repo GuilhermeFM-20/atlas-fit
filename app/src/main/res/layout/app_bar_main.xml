@@ -9,20 +9,20 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#C51212"
+        android:background="@drawable/side_nav_bar"
         android:theme="@style/Theme.AppSD.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#C51212"
+            android:background="@drawable/side_nav_bar"
             app:popupTheme="@style/Theme.AppSD.PopupOverlay" />
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" android:background="#C51212" />
+    <include layout="@layout/content_main" android:background="@drawable/side_nav_bar"/>
 
 
 
