@@ -68,6 +68,26 @@
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp" />
 
+            <EditText
+                android:id="@+id/inputHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:ems="10"
+                android:hint="Altura"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/inputAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:ems="10"
+                android:hint="Idade"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp" />
+
 <!--            <EditText-->
 <!--                android:id="@+id/minutes"-->
 <!--                android:layout_width="match_parent"-->
