@@ -1,7 +1,5 @@
 package com.example.app_sd.ui.login;
 
-import static android.widget.Toast.LENGTH_SHORT;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,11 +18,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.app_sd.MainActivity;
-import com.example.app_sd.MyApp;
 import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentLoginBinding;
 import com.example.app_sd.service.ApiService;
 import com.example.app_sd.ui.home.HomeViewModel;
+import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +46,17 @@ public class LoginFragment extends Fragment {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        //View view = inflater.inflate(R.layout.fragment_activities, container, false);
+
+        // Encontrar o botão e definir o OnClickListener
+        MaterialButton insertButton = root.findViewById(R.id.button);
+        insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testeClick(v);
+            }
+        });
+
         // Encontrar o botão pelo binding
         Button buttonNavigate = binding.button;
         buttonNavigate.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +65,8 @@ public class LoginFragment extends Fragment {
 
                 EditText email = (EditText) getActivity().findViewById(R.id.inputEmail);
                 EditText password = (EditText) getActivity().findViewById(R.id.inputPassword);
+
+
 
                 String jsonInputString = "{\"email\": \""+email.getText()+"\", \"password\": \""+password.getText()+"\"}";
 
@@ -114,6 +125,10 @@ public class LoginFragment extends Fragment {
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
+    }
+
+    public void testeClick(View view){
+        Navigation.findNavController(view).navigate(R.id.nav_insert_activities);
     }
 
     @Override

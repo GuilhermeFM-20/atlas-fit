@@ -53,6 +53,13 @@
                 android:layout_marginVertical="10dp"
                 android:text="Entrar" />
 
+            <Button
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Cadastre-se" />
+
         </LinearLayout>
 
 
