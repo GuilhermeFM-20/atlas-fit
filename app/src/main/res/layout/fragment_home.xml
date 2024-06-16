@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Braços"
+                    android:text="Cálculo do IMC"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" /> <!-- Cor do texto alterada para preto -->
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Peito"
+                    android:text="Nível Calórico"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" /> <!-- Cor do texto alterada para preto -->
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Pernas"
+                    android:text="Quilometros Percorridos"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
