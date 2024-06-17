@@ -31,7 +31,7 @@ public class MealsInsertFragment extends Fragment {
 
         Spinner spinner = binding.tipo;
 
-        String[] items = {"Selecione uma opção...","Aeróbica", "Musculação", "Flexibilidade", "Equilíbrio"};
+        String[] items = {"Selecione uma opção...","Café da Manhã", "Almoço", "Janta", "Lanche"};
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
@@ -54,29 +54,7 @@ public class MealsInsertFragment extends Fragment {
             }
         });
 
-        Spinner spinner2 = binding.intensidade;
 
-        String[] items2 = {"Selecione uma opção...","Baixa", "Moderada", "Alta"};
-
-
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items2);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner2.setAdapter(adapter2);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Pegando o item selecionado
-                String selectedItem = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Nada a fazer
-            }
-        });
 
         return root;
     }
