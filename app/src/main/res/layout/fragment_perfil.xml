@@ -79,12 +79,12 @@
                 android:minHeight="48dp" />
 
             <EditText
-                android:id="@+id/inputAge"
+                android:id="@+id/inputBirth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:ems="10"
-                android:hint="Idade"
+                android:hint="Nascimento"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp" />
 
