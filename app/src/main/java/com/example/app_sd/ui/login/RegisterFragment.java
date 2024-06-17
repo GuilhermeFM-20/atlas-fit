@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 import com.example.app_sd.MainActivity;
 import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentLoginBinding;
+import com.example.app_sd.databinding.FragmentRegisterBinding;
 import com.example.app_sd.service.ApiService;
 import com.example.app_sd.ui.home.HomeViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -30,9 +31,9 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class LoginFragment extends Fragment {
+public class RegisterFragment extends Fragment {
 
-    private FragmentLoginBinding binding;
+    private FragmentRegisterBinding binding;
 
 
 
@@ -43,7 +44,7 @@ public class LoginFragment extends Fragment {
 
 
 
-        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        binding = FragmentRegisterBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //View view = inflater.inflate(R.layout.fragment_activities, container, false);
