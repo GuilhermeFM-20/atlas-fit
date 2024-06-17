@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -109,7 +110,7 @@ public class PerfilFragment extends Fragment {
             try {
                 String response = api.request("PUT", "/users/" + id, jsonInputString);
                 getActivity().runOnUiThread(() -> {
-                    // Update UI if necessary
+                    getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "Registro atualizado com sucesso.", Toast.LENGTH_SHORT).show());
                 });
             } catch (Exception e) {
                 e.printStackTrace();

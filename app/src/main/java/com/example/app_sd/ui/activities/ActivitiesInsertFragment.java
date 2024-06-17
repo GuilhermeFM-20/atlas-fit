@@ -24,6 +24,7 @@ import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentActivitiesBinding;
 import com.example.app_sd.databinding.FragmentActivitiesInsertBinding;
 import com.example.app_sd.service.ApiService;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -84,7 +85,7 @@ public class ActivitiesInsertFragment extends Fragment {
 
         spinner2.setAdapter(adapter2);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Pegando o item selecionado
@@ -94,6 +95,15 @@ public class ActivitiesInsertFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Nada a fazer
+            }
+        });
+
+        // Encontrar o botão e definir o OnClickListener
+        MaterialButton insertButton = root.findViewById(R.id.insert);
+        insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertFunc(root);
             }
         });
 
@@ -107,7 +117,7 @@ public class ActivitiesInsertFragment extends Fragment {
 
 
         String jsonInputString = "{\"name\": \""+name.getText()+"\", \"idUser\":\""+id+"\", \"durationMinutes\": \""+minutes.getText()+"\", \"activityType\": \""+ itemSelecionadoType +"\", \"intensityLevel\": \""+ itemSelecionadoIntensity +"\"}";
-
+        Log.i("json",jsonInputString);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         executorService.execute(() -> {
