@@ -40,12 +40,13 @@ import java.util.concurrent.Executors;
 public class ActivitiesFragment extends Fragment {
 
     private FragmentActivitiesBinding binding;
+    private int id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-        int id = sharedPreferences.getInt("USER_ID", -1);
+        id = sharedPreferences.getInt("USER_ID", -1);
         Log.i("EXTRA_ID PERFIL",""+id);
 
         binding = FragmentActivitiesBinding.inflate(inflater, container, false);
@@ -76,7 +77,7 @@ public class ActivitiesFragment extends Fragment {
             try {
                 SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
                 int idUser = sharedPreferences2.getInt("USER_ID", -1);
-                String response = api.request("GET","/users/", null);
+                String response = api.request("GET","/activity/user/"+id, null);
                 getActivity().runOnUiThread(() -> {
                     
                     // Obtém a referência do layout pai onde a LinearLayout será adicionada
