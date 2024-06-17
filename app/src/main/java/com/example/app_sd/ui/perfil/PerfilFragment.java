@@ -79,6 +79,13 @@ public class PerfilFragment extends Fragment {
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
+
+                    EditText inputName = (EditText) getActivity().findViewById(R.id.inputWeight);
+                    EditText inputEmail = (EditText) getActivity().findViewById(R.id.inputEmail);
+
+                    inputName.setText(name);
+                    inputEmail.setText(email);
+
                 });
             } catch (Exception e) {
                 e.printStackTrace();

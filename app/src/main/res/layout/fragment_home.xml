@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Cálculo do IMC"
+                    android:text="Índice de massa corporal (IMC)"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" /> <!-- Cor do texto alterada para preto -->
@@ -67,6 +67,44 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
                     android:background="#000000" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="90px"
+                    android:rotationX="0"
+                    android:text="Peso: x"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="700px"
+                    android:layout_marginTop="90px"
+                    android:text="Altura: x"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="170px"
+                    android:text="20"
+                    android:textSize="48sp" />
+
+                <Button
+                    android:id="@+id/updateWeight"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="550px"
+                    android:layout_marginTop="200px"
+                    android:text="Atualizar"
+                    android:textColorLink="#DA2222" />
+
                 <!-- Adicione aqui outros elementos dentro do FrameLayout -->
             </FrameLayout>
 
