@@ -1,6 +1,7 @@
 package com.example.app_sd.ui.weight;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,14 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.app_sd.MainActivity;
 import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentWeightBinding;
 import com.example.app_sd.service.ApiService;
@@ -26,6 +30,10 @@ import com.google.android.material.button.MaterialButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -43,13 +51,7 @@ public class WeightFragment extends Fragment {
         FragmentWeightBinding binding = FragmentWeightBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        MaterialButton insertButton = root.findViewById(R.id.button2);
-        insertButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                atualizarButton(v);
-            }
-        });
+
 
 
 
@@ -64,42 +66,45 @@ public class WeightFragment extends Fragment {
         int id = sharedPreferences.getInt("USER_ID", -1);
         Log.i("EXTRA_ID PERFIL",""+id);
 
-        String[] items = {"Selecione uma opção...","Sedentário", "Levemente Ativo", "Moderadamente Ativo", "Muito Ativo", "Extremamente Ativo"};
+
+        MaterialButton insertButton = root.findViewById(R.id.button);
+        insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                atualizarButton(v, (long) id);
+            }
+        });
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return root;
+    }
 
-        //spinner.setAdapter(adapter);
+    public void atualizarButton(View view, Long id){
 
+        EditText value = (EditText) view.findViewById(R.id.inputWeight1);
+
+        // Obter a data atual
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+        // Formatar a data no padrão desejado (yyyy-MM-dd)
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String formattedDate = sdf.format(currentDate);
+
+        String jsonInputString = "{\"idUser\": \""+id+"\", \"value\": \""+value.getText()+"\", \"date\": \""+formattedDate+"\"}";
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         executorService.execute(() -> {
             ApiService api = new ApiService();
             try {
-                SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                int idUser = sharedPreferences2.getInt("USER_ID", -1);
-                String response = api.request("GET",this.prefix+idUser, null);
+                Log.i("json",jsonInputString);
+                String response = api.request("POST","/weight/", jsonInputString);
                 getActivity().runOnUiThread(() -> {
-                    JSONObject jsonObject = null;
-                    String name = null;
-                    String email = null;
 
-                    try {
-                        jsonObject = new JSONObject(response);
-                        name = jsonObject.getString("name");
-                        email = jsonObject.getString("email");
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                    EditText inputName = (EditText) getActivity().findViewById(R.id.inputWeight);
-                    EditText inputEmail = (EditText) getActivity().findViewById(R.id.inputEmail);
-
-                    inputName.setText(name);
-                    inputEmail.setText(email);
-
+                    NavController navController = Navigation.findNavController(requireView());
+                    navController.navigate(R.id.nav_home);
 
                 });
             } catch (Exception e) {
@@ -108,11 +113,7 @@ public class WeightFragment extends Fragment {
             }
         });
 
-        return root;
-    }
-
-    public void atualizarButton(View view){
-        Navigation.findNavController(view).navigate(R.id.nav_insert_activities);
+;
     }
     @Override
     public void onDestroyView() {

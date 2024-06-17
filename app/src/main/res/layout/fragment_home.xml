@@ -97,7 +97,7 @@
                     android:textSize="48sp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/updateWeight"
                     android:layout_width="135dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="550px"
