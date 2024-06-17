@@ -30,7 +30,7 @@
 
 
             <EditText
-                android:id="@+id/inputLogin"
+                android:id="@+id/inputName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
@@ -40,7 +40,7 @@
                 android:minHeight="48dp" />
 
             <Spinner
-                android:id="@+id/tipo"
+                android:id="@+id/inputType"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginVertical="5dp"
@@ -48,7 +48,7 @@
                 tools:ignore="HardcodedText" />
 
             <EditText
-                android:id="@+id/minutes"
+                android:id="@+id/inputMinutes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
@@ -58,13 +58,13 @@
                 android:minHeight="48dp" />
 
             <Spinner
-                android:id="@+id/intensidade"
+                android:id="@+id/inputIntensity"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginVertical="5dp"
 
                 />
-            
+
             <Button
                 android:id="@+id/insert"
                 android:layout_width="match_parent"
