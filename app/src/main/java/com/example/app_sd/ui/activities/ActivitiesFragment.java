@@ -76,7 +76,7 @@ public class ActivitiesFragment extends Fragment {
             try {
                 SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
                 int idUser = sharedPreferences2.getInt("USER_ID", -1);
-                String response = api.request("GET","/activity/", null);
+                String response = api.request("GET","/users/", null);
                 getActivity().runOnUiThread(() -> {
                     
                     // Obtém a referência do layout pai onde a LinearLayout será adicionada
