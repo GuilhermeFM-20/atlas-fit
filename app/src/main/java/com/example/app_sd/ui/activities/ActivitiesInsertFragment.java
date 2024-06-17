@@ -1,5 +1,7 @@
 package com.example.app_sd.ui.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +24,17 @@ import com.example.app_sd.databinding.FragmentActivitiesInsertBinding;
 public class ActivitiesInsertFragment extends Fragment {
 
     private FragmentActivitiesInsertBinding binding;
+    private String itemSelecionadoType;
+    private String itemSelecionadoIntensity;
+    private  int id;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        id = sharedPreferences.getInt("USER_ID", -1);
+        Log.i("EXTRA_ID PERFIL",""+id);
         binding = FragmentActivitiesInsertBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -82,6 +91,34 @@ public class ActivitiesInsertFragment extends Fragment {
         });
 
         return root;
+    }
+
+    public void insertFunc(View v){
+
+        EditText name = (EditText) v.findViewById(R.id.inputName);
+        EditText minutes = (EditText) v.findViewById(R.id.inputMinutes);
+
+
+        String jsonInputString = "{\"name\": \""+name.getText()+"\", \"idUser\":\""+id+"\", \"durationMinutes\": \""+minutes.getText()+"\", \"activityType\": \""+ itemSelecionadoType +"\", \"intensityLevel\": \""+ itemSelecionadoIntensity +"\"}";
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(() -> {
+            ApiService api = new ApiService();
+            try {
+                Log.i("json",jsonInputString);
+                String response = api.request("POST","/activity/", jsonInputString);
+                getActivity().runOnUiThread(() -> {
+
+                    NavController navController = Navigation.findNavController(requireView());
+                    navController.navigate(R.id.nav_activities);
+
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+        });
     }
 
     @Override
