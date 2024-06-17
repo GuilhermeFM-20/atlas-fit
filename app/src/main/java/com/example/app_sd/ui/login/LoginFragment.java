@@ -90,7 +90,7 @@ public class LoginFragment extends Fragment {
                             }
 
 
-                            if (status == "true") {
+                            //if (status == "true") {
                                 // Usar NavController para navegação
 
                                 String id = null;
@@ -106,18 +106,16 @@ public class LoginFragment extends Fragment {
                                 editor.putInt("USER_ID", Integer.parseInt(id));
                                 editor.apply();
                                 startActivity(intent);
-                            } else {
+                            /*} else {
                                 getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "Usuário ou senha inválido.", Toast.LENGTH_SHORT).show());
-                            }
+                            }*/
 
 
                         });
                     } catch (Exception e) {
                         e.printStackTrace();
-                            
                     }
                 });
-
 
             }
         });

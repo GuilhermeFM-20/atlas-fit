@@ -12,8 +12,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_activities">Atividades</string>
-    <string name="menu_meals">refeições</string>
+    <string name="menu_meals">Refeições</string>
     <string name="menu_perfil">Perfil</string>
+    <string name="menu_weight">Peso</string>
     <string name="name">Name</string>
     <string name="name2">Name2</string>
     <string name="name3">Name3</string>

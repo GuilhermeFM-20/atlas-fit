@@ -13,8 +13,14 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.app_sd.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_weight"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_weight"
+        android:name="com.example.app_sd.ui.weight.WeightFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_weight" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -37,16 +43,18 @@
     <fragment
         android:id="@+id/nav_insert_meals"
         android:name="com.example.app_sd.ui.meals.MealsInsertFragment"
-        android:label="@string/menu_activities"
+        android:label="@string/menu_meals"
         tools:layout="@layout/fragment_meals_insert" />
 
     <fragment
         android:id="@+id/nav_meals"
-        android:name="com.example.app_sd.ui.meals.MealsInsertFragment"
-        android:label="@string/menu_activities"
+        android:name="com.example.app_sd.ui.meals.MealsFragment"
+        android:label="@string/menu_meals"
         tools:layout="@layout/fragment_meals" />
 
+
     <fragment
+
         android:id="@+id/nav_perfil"
         android:name="com.example.app_sd.ui.perfil.PerfilFragment"
         android:label="@string/menu_perfil"
