@@ -15,7 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.app_sd.MainActivity;
 import com.example.app_sd.R;
@@ -46,14 +48,15 @@ public class LoginFragment extends Fragment {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //View view = inflater.inflate(R.layout.fragment_activities, container, false);
+        View view = inflater.inflate(R.layout.fragment_activities, container, false);
 
         // Encontrar o botão e definir o OnClickListener
-        MaterialButton insertButton = root.findViewById(R.id.button);
+        MaterialButton insertButton = root.findViewById(R.id.register);
         insertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testeClick(v);
+                NavController navController = Navigation.findNavController(requireView());
+                navController.navigate(R.id.nav_register);
             }
         });
 
@@ -126,7 +129,9 @@ public class LoginFragment extends Fragment {
     }
 
     public void testeClick(View view){
-        Navigation.findNavController(view).navigate(R.id.nav_insert_activities);
+        NavController navController = NavHostFragment.findNavController(this);
+
+        navController.navigate(R.id.nav_register);
     }
 
     @Override
