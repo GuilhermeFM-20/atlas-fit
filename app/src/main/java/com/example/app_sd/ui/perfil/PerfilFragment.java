@@ -1,9 +1,6 @@
 package com.example.app_sd.ui.perfil;
 
-import static android.content.Intent.getIntent;
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,18 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.app_sd.MyApp;
 import com.example.app_sd.R;
 import com.example.app_sd.databinding.FragmentPerfilBinding;
 import com.example.app_sd.service.ApiService;
-import com.example.app_sd.service.HttpServices;
+import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,88 +30,88 @@ import java.util.concurrent.Executors;
 public class PerfilFragment extends Fragment {
 
     private FragmentPerfilBinding binding;
-    protected String prefix = "/users/";
+    private String prefix = "/users/";
+    private String selectedItem;
+    private int id;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-
-
-        FragmentPerfilBinding binding = FragmentPerfilBinding.inflate(inflater, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
 
         PerfilViewModel homeViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
 
         Spinner spinner = binding.combo;
 
-
-        // Obtendo a Intent da Activity associada ao Fragment
-        // Em qualquer Activity ou Fragment, por exemplo, no PerfilFragment
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-        int id = sharedPreferences.getInt("USER_ID", -1);
-        Log.i("EXTRA_ID PERFIL",""+id);
+        id = sharedPreferences.getInt("USER_ID", -1);
+        Log.i("EXTRA_ID PERFIL", "" + id);
 
-        String[] items = {"Selecione uma opção...","Sedentário", "Levemente Ativo", "Moderadamente Ativo", "Muito Ativo", "Extremamente Ativo"};
-
-
+        String[] items = {"Selecione uma opção...", "Masculino", "Feminino"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
+                selectedItem = parent.getItemAtPosition(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Nada a fazer
+                selectedItem = null;
             }
         });
 
-
-
-
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-
         executorService.execute(() -> {
             ApiService api = new ApiService();
             try {
-                SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                int idUser = sharedPreferences2.getInt("USER_ID", -1);
-                String response = api.request("GET",this.prefix+idUser, null);
+                String response = api.request("GET", prefix + id, null);
                 getActivity().runOnUiThread(() -> {
-                    JSONObject jsonObject = null;
-                    String name = null;
-                    String email = null;
-
                     try {
-                        jsonObject = new JSONObject(response);
-                        name = jsonObject.getString("name");
-                        email = jsonObject.getString("email");
+                        JSONObject jsonObject = new JSONObject(response);
+                        binding.inputName.setText(jsonObject.getString("name"));
+                        binding.inputEmail.setText(jsonObject.getString("email"));
+                        binding.inputHeight.setText(jsonObject.getString("height"));
+                        binding.inputBirth.setText(jsonObject.getString("birthDate"));
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
-                    EditText inputName = (EditText) getActivity().findViewById(R.id.inputName);
-                    EditText inputEmail = (EditText) getActivity().findViewById(R.id.inputEmail);
-
-                    inputName.setText(name);
-                    inputEmail.setText(email);
-
-
                 });
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        });
 
+        MaterialButton insertButton = root.findViewById(R.id.button);
+        insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertFunc();
             }
         });
 
         return root;
+    }
+
+    public void insertFunc() {
+        String jsonInputString = "{\"name\": \"" + binding.inputName.getText() + "\", \"email\":\"" + binding.inputEmail.getText() + "\", \"password\": \"\", \"height\": \"" + binding.inputHeight.getText() + "\", \"birthDate\": \"" + binding.inputBirth.getText() + "\", \"gender\":\"" + selectedItem + "\"}";
+
+        Log.i("json", jsonInputString);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            ApiService api = new ApiService();
+            try {
+                String response = api.request("PUT", "/users/" + id, jsonInputString);
+                getActivity().runOnUiThread(() -> {
+                    // Update UI if necessary
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override

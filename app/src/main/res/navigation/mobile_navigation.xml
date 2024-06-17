@@ -37,14 +37,15 @@
     <fragment
         android:id="@+id/nav_insert_meals"
         android:name="com.example.app_sd.ui.meals.MealsInsertFragment"
-        android:label="@string/menu_activities"
+        android:label="@string/menu_meals"
         tools:layout="@layout/fragment_meals_insert" />
 
     <fragment
         android:id="@+id/nav_meals"
-        android:name="com.example.app_sd.ui.meals.MealsInsertFragment"
-        android:label="@string/menu_activities"
+        android:name="com.example.app_sd.ui.meals.MealsFragment"
+        android:label="@string/menu_meals"
         tools:layout="@layout/fragment_meals" />
+
 
     <fragment
         android:id="@+id/nav_perfil"

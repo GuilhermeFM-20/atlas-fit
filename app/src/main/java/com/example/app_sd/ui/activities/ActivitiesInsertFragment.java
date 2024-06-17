@@ -1,5 +1,7 @@
 package com.example.app_sd.ui.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,12 +34,15 @@ public class ActivitiesInsertFragment extends Fragment {
     private FragmentActivitiesInsertBinding binding;
     private String itemSelecionadoType;
     private String itemSelecionadoIntensity;
+    private  int id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        id = sharedPreferences.getInt("USER_ID", -1);
+        Log.i("EXTRA_ID PERFIL",""+id);
 
         binding = FragmentActivitiesInsertBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -115,7 +120,7 @@ public class ActivitiesInsertFragment extends Fragment {
         EditText minutes = (EditText) v.findViewById(R.id.inputMinutes);
 
 
-        String jsonInputString = "{\"name\": \""+name.getText()+"\", \"durationMinutes\": \""+minutes.getText()+"\", \"activityType\": \""+ itemSelecionadoType +"\", \"intensityLevel\": \""+ itemSelecionadoIntensity +"\"}";
+        String jsonInputString = "{\"name\": \""+name.getText()+"\", \"idUser\":\""+id+"\", \"durationMinutes\": \""+minutes.getText()+"\", \"activityType\": \""+ itemSelecionadoType +"\", \"intensityLevel\": \""+ itemSelecionadoIntensity +"\"}";
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
