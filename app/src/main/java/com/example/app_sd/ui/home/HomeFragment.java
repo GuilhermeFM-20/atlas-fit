@@ -80,6 +80,8 @@ public class HomeFragment extends Fragment {
                 // Chamando os dois endpoints
                 String response = api.request("GET", "/weight/user/" + id, null);
                 String response2 = api.request("GET", "/users/" + id, null);
+                String response3 = api.request("GET", "/meals/user/" + id, null);
+                String response4 = api.request("GET", "/activity/user/" + id, null);
 
                 // Executando o código de UI na thread principal
                 getActivity().runOnUiThread(() -> {
@@ -97,12 +99,61 @@ public class HomeFragment extends Fragment {
                         JSONObject userData = jsonResponse2.getJSONObject("data"); // Corrigido para acessar o objeto 'data'
                         height = userData.getString("height");
 
+                        JSONObject jsonResponse3 = new JSONObject(response3);
+                        JSONArray mealsData = jsonResponse3.getJSONArray("data");
 
-                        // Definindo os valores nos campos da UI
+                        float breakFast = 0;
+                        float lunch = 0;
+                        float dinner = 0;
+                        float snack = 0;
+                        float values = 0;
+                        String type = null;
+
+                        for (int i = 0; i < mealsData.length(); i++) {
+                            JSONObject jsonObject4 = mealsData.getJSONObject(i);
+                            type = jsonObject4.getString("type");
+                            values = Float.parseFloat(jsonObject4.getString("calories"));
+
+                            switch (type) {
+                                case "Janta":
+                                    dinner += values;
+                                    break;
+                                case "Lanche Livre":
+                                    snack += values;
+                                    break;
+                                case "Almoço":
+                                    lunch += values;
+                                    break;
+                                case "Café da Manhã":
+                                    breakFast += values;
+                                    break;
+                            }
+                        }
+
+
+                            JSONObject jsonResponse4 = new JSONObject(response4);
+                            JSONArray minutesData = jsonResponse4.getJSONArray("data");
+
+                            float totalDuration = 0;
+
+                            // Iteração sobre o JSONArray e cálculo da duração total
+                            for (int i = 0; i < minutesData.length(); i++) {
+                                JSONObject jsonObject5 = minutesData.getJSONObject(i);
+                                float durationMinutes = Float.parseFloat(jsonObject5.getString("durationMinutes"));
+                                totalDuration += durationMinutes;
+                            }
+
+                            // Definindo o valor da duração total no TextView usando binding
+                            binding.minutesValue.setText(String.valueOf((int) totalDuration));
+
+
+
+                        binding.cofeBreak.setText(String.valueOf((int) breakFast));
+                        binding.lunch.setText(String.valueOf((int) lunch));
+                        binding.dinner.setText(String.valueOf((int) dinner));
+                        binding.snack.setText(String.valueOf((int) snack));
+
                         binding.heightValue.setText(height);
-
-
-                        // Definindo os valores nos campos da UI
                         binding.weightValue.setText(value);
 
 

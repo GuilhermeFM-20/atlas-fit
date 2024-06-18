@@ -148,6 +148,93 @@
                     android:layout_marginTop="30dp"
                     android:background="#000000" />
 
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="100px"
+                    android:text="Calorias Consumidas:"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="160px"
+                    android:text="Café da Manhã:"
+                    android:textSize="17sp"
+                    />
+                <TextView
+                    android:id="@+id/cofeBreak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="410px"
+                    android:layout_marginTop="160px"
+                    android:text=""
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="220px"
+                    android:text="Almoço:"
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:id="@+id/lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="260px"
+                    android:layout_marginTop="220px"
+                    android:text=""
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="580px"
+                    android:layout_marginTop="160px"
+                    android:text="Janta:"
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:id="@+id/dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="720px"
+                    android:layout_marginTop="160px"
+                    android:text=""
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="440px"
+                    android:layout_marginTop="220px"
+                    android:text="Lanche Livre:"
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:id="@+id/snack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="720px"
+                    android:layout_marginTop="220px"
+                    android:text=""
+                    android:textSize="17sp"
+                    />
+
+
+
+
                 <!-- Adicione aqui outros elementos dentro do FrameLayout -->
             </FrameLayout>
 
@@ -162,7 +249,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="Quilometros Percorridos"
+                    android:text="Exercícios"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -172,6 +259,22 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
                     android:background="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="100px"
+                    android:text="Minutos Gerais:"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/minutesValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80px"
+                    android:layout_marginTop="170px"
+                    android:text="0"
+                    android:textSize="48sp" />
             </FrameLayout>
 
         </LinearLayout>

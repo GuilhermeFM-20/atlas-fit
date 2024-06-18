@@ -10,14 +10,15 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/botao_de_inicio"
             android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+
         <item
             android:id="@+id/nav_activities"
             android:icon="@drawable/notas_adesivas"
             android:title="@string/menu_activities" />
+        <item
+            android:id="@+id/nav_meals"
+            android:icon="@drawable/dish"
+            android:title="@string/menu_meals" />
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/do_utilizador"
