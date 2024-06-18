@@ -21,8 +21,8 @@ Esse app visa pessoas que querem manter uma rotina de exercícios e controle de 
   <tr>
     <td><img src="img/perfil.jpeg" width="200"> </td>
     <td><img src="img/log.jpeg" width="200"> </td>
-    <td><img src="imag/login.jpeg" width="200"> </td>
-    <td><img src="imag/dashboard.jpeg" width="200"> </td>
+    <td><img src="img/login.jpeg" width="200"> </td>
+    <td><img src="img/dashboard.jpeg" width="200"> </td>
   </tr>
 </table>
 
