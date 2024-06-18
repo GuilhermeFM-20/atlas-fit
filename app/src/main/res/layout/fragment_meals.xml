@@ -23,21 +23,19 @@
 
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageView6"
                 android:layout_width="match_parent"
                 android:layout_height="185dp"
-                android:src="@drawable/fisico" />
+                android:src="@drawable/diet" />
 
 
             <EditText
                 android:id="@+id/inputSearchGrid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
                 android:ems="10"
-                android:hint="Buscar"
                 android:inputType="text"
-                android:minHeight="48dp" />
+                android:hint="Buscar" />
 
 
             <Button
@@ -67,6 +65,7 @@
                     android:orientation="vertical">
 
                     <!-- Cabeçalho da tabela -->
+
                     <LinearLayout
                         android:id="@+id/table"
                         android:layout_width="match_parent"

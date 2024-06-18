@@ -26,26 +26,36 @@
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="185dp"
-                android:src="@drawable/fisico" />
+                android:src="@drawable/diet" />
 
 
             <EditText
-                android:id="@+id/inputSearchGrid"
+                android:id="@+id/inputName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:ems="10"
-                android:hint="Buscar"
+                android:hint="Nome"
                 android:inputType="text"
                 android:minHeight="48dp" />
 
-
-            <Button
-                android:id="@+id/search"
+            <EditText
+                android:id="@+id/inputValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
-                android:text="Buscar" />
+                android:ems="10"
+                android:hint="Valor Calórico"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp" />
+
+            <Spinner
+                android:id="@+id/inputType"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginVertical="5dp"
+
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/insert"
@@ -54,6 +64,23 @@
                 android:layout_marginVertical="5dp"
                 android:onClick="testeClick"
                 android:text="Cadastrar Novo" />
+
+            <EditText
+                android:id="@+id/inputSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:ems="10"
+                android:hint="Buscar"
+                android:inputType="text"
+                android:minHeight="48dp" />
+            <Button
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="Buscar" />
+
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -67,6 +94,7 @@
                     android:orientation="vertical">
 
                     <!-- Cabeçalho da tabela -->
+
                     <LinearLayout
                         android:id="@+id/table"
                         android:layout_width="match_parent"
@@ -81,7 +109,7 @@
                             android:background="@drawable/border"
                             android:gravity="center"
                             android:padding="8dp"
-                            android:text="Código"
+                            android:text="Calorias"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -91,7 +119,16 @@
                             android:background="@drawable/border"
                             android:gravity="center"
                             android:padding="8dp"
-                            android:text="Nome"
+                            android:text="Rfeição"
+                            android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:background="@drawable/border"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="Qtde"
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -101,7 +138,6 @@
 
                 </LinearLayout>
             </ScrollView>
-
 
 
         </LinearLayout>

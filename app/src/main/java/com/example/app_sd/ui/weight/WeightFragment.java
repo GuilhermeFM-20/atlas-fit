@@ -182,6 +182,7 @@ public class WeightFragment extends Fragment {
 
     public void atualizarButton(View view){
 
+
         Log.i("weight", String.valueOf(binding.inputWeight1.getText()));
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
