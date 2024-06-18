@@ -42,7 +42,7 @@
             <!--                android:minHeight="48dp" />-->
 
             <EditText
-                android:id="@+id/inputSenha"
+                android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
