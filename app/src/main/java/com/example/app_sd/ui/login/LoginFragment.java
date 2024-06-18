@@ -19,8 +19,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.app_sd.LoginActivity;
 import com.example.app_sd.MainActivity;
 import com.example.app_sd.R;
+import com.example.app_sd.RegisterActivity;
 import com.example.app_sd.databinding.FragmentLoginBinding;
 import com.example.app_sd.service.ApiService;
 import com.example.app_sd.ui.home.HomeViewModel;
@@ -36,6 +38,8 @@ public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
 
+    private NavController navController;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,15 +54,7 @@ public class LoginFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_activities, container, false);
 
-        // Encontrar o botão e definir o OnClickListener
-        MaterialButton insertButton = root.findViewById(R.id.register);
-        insertButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(requireView());
-                navController.navigate(R.id.nav_register);
-            }
-        });
+
 
         // Encontrar o botão pelo binding
         Button buttonNavigate = binding.button;
@@ -120,6 +116,18 @@ public class LoginFragment extends Fragment {
                     }
                 });
 
+            }
+        });
+
+        View view2 = inflater.inflate(R.layout.fragment_login, container, false);
+
+        // Encontrar o botão e definir o OnClickListener
+        MaterialButton insertButton = root.findViewById(R.id.register);
+        insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
