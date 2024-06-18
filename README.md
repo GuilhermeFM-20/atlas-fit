@@ -1,6 +1,6 @@
 # App Fitness - Atlas Fit
 
-![Crefti Logo](https://raw.githubusercontent.com/rahul7400/E-commerce-Android-App/main/images/logo.webp)
+![Crefti Logo](C:\Users\Guilherme Freire\AndroidStudioProjects\AppSD\app\src\main\res\drawable\logo1.png)
 
 Esse app visa pessoas que querem manter uma rotina de exercícios e controle de calorias. O app possui  comandos para registrar atividades (exercícios físicos), registros de alimentos informando quantas calorias o alimento possui, calcula o IMC da pessoa, controle de atividades. 
 ## Features
@@ -12,7 +12,7 @@ Esse app visa pessoas que querem manter uma rotina de exercícios e controle de 
 
 ## Providers
 
-- Buscar as Caolorias de cada refeição: https://caloriasporalimentoapi.herokuapp.com/api/calorias/
+- Buscar as calorias de cada refeição: https://caloriasporalimentoapi.herokuapp.com/api/calorias/
 - Api do projeto[: https://caloriasporalimentoapi.herokuapp.com/api/calorias/](https://github.com/GuilhermeFM-20/projeto-sd)
 
 ## Screenshots

@@ -83,30 +83,34 @@ public class LoginFragment extends Fragment {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 status = jsonObject.getString("status");
-                                data = jsonObject.getString("data");
-                            } catch (JSONException e) {
-                                throw new RuntimeException(e);
-                            }
 
 
-                            if (status == "true") {
+
+
+                            if (status != "false") {
                                 // Usar NavController para navegação
 
                                 String id = null;
                                 try {
-                                    JSONObject jsonObject = new JSONObject(data);
-                                    id = jsonObject.getString("id");
+                                    data = jsonObject.getString("data");
+                                    JSONObject jsonObject2 = new JSONObject(data);
+                                    id = jsonObject2.getString("id");
+                                    Intent intent = new Intent(requireActivity(), MainActivity.class);
+                                    SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putInt("USER_ID", Integer.parseInt(id));
+                                    editor.apply();
+                                    startActivity(intent);
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
                                 }
-                                Intent intent = new Intent(requireActivity(), MainActivity.class);
-                                SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putInt("USER_ID", Integer.parseInt(id));
-                                editor.apply();
-                                startActivity(intent);
+
                             } else {
-                                getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "Usuário ou senha inválido.", Toast.LENGTH_SHORT).show());
+                                getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "Usuário ou senha inválida.", Toast.LENGTH_SHORT).show());
+                            }
+
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
                             }
 
 
