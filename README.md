@@ -1,6 +1,6 @@
 # App Fitness - Atlas Fit
 
-![Crefti Logo](C:\Users\Guilherme Freire\AndroidStudioProjects\AppSD\app\src\main\res\drawable\logo1.png)
+![Crefti Logo](https://raw.githubusercontent.com/GuilhermeFM-20/atlas-fit/main/app/src/main/res/drawable/logo2.png)
 
 Esse app visa pessoas que querem manter uma rotina de exercícios e controle de calorias. O app possui  comandos para registrar atividades (exercícios físicos), registros de alimentos informando quantas calorias o alimento possui, calcula o IMC da pessoa, controle de atividades. 
 ## Features
