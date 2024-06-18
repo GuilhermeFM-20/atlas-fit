@@ -104,7 +104,7 @@ public class RegisterFragment extends Fragment {
     }
 
     public void testeClick(View view){
-        String jsonInputString = "{\"name\": \"" + binding.inputName.getText() + "\", \"email\":\"" + binding.inputEmail.getText() + "\", \"password\": \"\", \"height\": \"" + binding.inputHeight.getText() + "\", \"birthDate\": \"" + binding.inputBirth.getText() + "\", \"gender\":\"" + selectedItem + "\"}";
+        String jsonInputString = "{\"name\": \"" + binding.inputName.getText() + "\", \"email\":\"" + binding.inputEmail.getText() + "\", \"password\": \""+binding.inputPassword.getText()+"\", \"height\": \"" + binding.inputHeight.getText() + "\", \"birthDate\": \"" + binding.inputBirth.getText() + "\", \"gender\":\"" + selectedItem + "\"}";
 
         Log.i("json", jsonInputString);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
