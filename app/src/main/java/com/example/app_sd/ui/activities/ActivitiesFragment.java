@@ -89,7 +89,9 @@ public class ActivitiesFragment extends Fragment {
                     try{
                         if (tableLayout != null) {
 
-                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray jsonArray = jsonResponse.getJSONArray("data");
+
                             // Adiciona linhas dinamicamente
                             for (int i = 0; i <= jsonArray.length(); i++) { // Exemplo: adicionar 10 linhas
 

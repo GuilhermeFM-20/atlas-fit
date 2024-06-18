@@ -47,13 +47,15 @@ public class WeightFragment extends Fragment {
     private FragmentWeightBinding binding;
     protected String prefix = "/users/";
 
+    private Long id = null;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
 
-        FragmentWeightBinding binding = FragmentWeightBinding.inflate(inflater, container, false);
+        binding = FragmentWeightBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 
@@ -68,17 +70,11 @@ public class WeightFragment extends Fragment {
         // Obtendo a Intent da Activity associada ao Fragment
         // Em qualquer Activity ou Fragment, por exemplo, no PerfilFragment
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-        int id = sharedPreferences.getInt("USER_ID", -1);
-        Log.i("EXTRA_ID PERFIL",""+id);
+        id = (long) sharedPreferences.getInt("USER_ID", -1);
 
 
-        MaterialButton insertButton = root.findViewById(R.id.button);
-        insertButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                atualizarButton(v, (long) id);
-            }
-        });
+
+
 
         View view = inflater.inflate(R.layout.fragment_weight, container, false);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -87,13 +83,12 @@ public class WeightFragment extends Fragment {
         executorService.execute(() -> {
             ApiService api = new ApiService();
             try {
-                SharedPreferences sharedPreferences2 = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                int idUser = sharedPreferences2.getInt("USER_ID", -1);
+
                 String response = api.request("GET","/weight/user/"+id, null);
                 getActivity().runOnUiThread(() -> {
 
                     // Obtém a referência do layout pai onde a LinearLayout será adicionada
-                    LinearLayout tableLayout = view.findViewById(R.id.table2);
+                    LinearLayout tableLayout = root.findViewById(R.id.table2);
 
                     String value = null;
                     String date = null;
@@ -101,7 +96,9 @@ public class WeightFragment extends Fragment {
                     try{
                         if (tableLayout != null) {
 
-                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray jsonArray = jsonResponse.getJSONArray("data");
+
                             // Adiciona linhas dinamicamente
                             for (int i = 0; i <= jsonArray.length(); i++) { // Exemplo: adicionar 10 linhas
 
@@ -109,6 +106,9 @@ public class WeightFragment extends Fragment {
 
                                 value = jsonObject.getString("value");
                                 date = jsonObject.getString("date");
+
+                                Log.i("value",value);
+                                Log.i("date",date);
 
                                 LinearLayout rowLayout = new LinearLayout(getActivity());
                                 LinearLayout.LayoutParams rowLayoutParams = new LinearLayout.LayoutParams(
@@ -148,17 +148,6 @@ public class WeightFragment extends Fragment {
                                 rowLayout.addView(codeTextView);
                                 rowLayout.addView(nameTextView);
 
-                                // Adicione um evento de clique ao valor de "id" na tabela
-                                codeTextView.setOnClickListener(v -> {
-                                    // Obtenha o id clicado
-                                    String idClicado = ((TextView) v).getText().toString();
-
-                                    // Inicie uma nova Activity para exibir os detalhes com base no id clicado
-//                                    Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
-//                                    intent.putExtra("id", idClicado);
-//                                    startActivity(intent);
-                                });
-
                                 Log.e("ActivitiesFragment", "CHEGOU AQUI:"+rowLayout);
 
                                 tableLayout.addView(rowLayout);
@@ -178,24 +167,29 @@ public class WeightFragment extends Fragment {
             }
         });
 
+        // Encontrar o botão e definir o OnClickListener
+        MaterialButton insertButton = root.findViewById(R.id.buttonSubmit);
+        insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                atualizarButton(root);
+            }
+        });
 
 
         return root;
     }
 
-    public void atualizarButton(View view, Long id){
+    public void atualizarButton(View view){
 
-        EditText value = (EditText) view.findViewById(R.id.inputWeight1);
-
-        // Obter a data atual
+        Log.i("weight", String.valueOf(binding.inputWeight1.getText()));
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
 
-        // Formatar a data no padrão desejado (yyyy-MM-dd)
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String formattedDate = sdf.format(currentDate);
 
-        String jsonInputString = "{\"idUser\": \""+id+"\", \"value\": \""+value.getText()+"\", \"date\": \""+formattedDate+"\"}";
+        String jsonInputString = "{\"idUser\": \""+id+"\", \"value\": \""+binding.inputWeight1.getText()+"\", \"date\": \""+formattedDate+"\"}";
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -203,7 +197,7 @@ public class WeightFragment extends Fragment {
             ApiService api = new ApiService();
             try {
                 Log.i("json",jsonInputString);
-                String response = api.request("POST","/weight/", jsonInputString);
+                api.request("POST","/weight/", jsonInputString);
                 getActivity().runOnUiThread(() -> {
 
                     NavController navController = Navigation.findNavController(requireView());
@@ -216,7 +210,6 @@ public class WeightFragment extends Fragment {
             }
         });
 
-;
     }
     @Override
     public void onDestroyView() {

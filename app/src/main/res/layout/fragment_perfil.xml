@@ -84,8 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:ems="10"
-                android:hint="Nascimento"
-                android:inputType="numberDecimal"
+                android:hint="Nascimento(0000-00-00)"
+                android:inputType="date"
                 android:minHeight="48dp" />
 
 <!--            <EditText-->

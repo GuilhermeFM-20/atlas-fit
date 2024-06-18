@@ -19,7 +19,7 @@ public class ApiService{
     private String jsonBody;
 
     private final int TIMEOUT = 3000;
-    private String baseUrl = "http://192.168.0.117:8000/api";
+    private String baseUrl = "http://192.168.0.118:8080/api";
 
 
 
