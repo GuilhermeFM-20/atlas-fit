@@ -72,7 +72,9 @@ public class PerfilFragment extends Fragment {
                 String response = api.request("GET", prefix + id, null);
                 getActivity().runOnUiThread(() -> {
                     try {
-                        JSONObject jsonObject = new JSONObject(response);
+                        JSONObject json = new JSONObject(response);
+                        JSONObject jsonObject = json.getJSONObject("data");
+
                         binding.inputName.setText(jsonObject.getString("name"));
                         binding.inputEmail.setText(jsonObject.getString("email"));
                         binding.inputHeight.setText(jsonObject.getString("height"));
@@ -109,13 +111,37 @@ public class PerfilFragment extends Fragment {
             ApiService api = new ApiService();
             try {
                 String response = api.request("PUT", "/users/" + id, jsonInputString);
+
+                // Processar a resposta na thread principal
                 getActivity().runOnUiThread(() -> {
-                    getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), "Registro atualizado com sucesso.", Toast.LENGTH_SHORT).show());
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String message = jsonResponse.getString("msg");
+
+                        // Verificar se a atualização foi bem-sucedida ou não
+                        if ("Houve algum erro na atualização.".equals(message)) {
+                            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Registro atualizado com sucesso.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Erro ao processar resposta.", Toast.LENGTH_SHORT).show();
+                    }
                 });
+
             } catch (Exception e) {
                 e.printStackTrace();
+                // Tratamento de erro ao fazer a requisição
+                getActivity().runOnUiThread(() -> {
+                    Toast.makeText(getActivity(), "Erro ao atualizar registro.", Toast.LENGTH_SHORT).show();
+                });
             }
         });
+
+
+
     }
 
     @Override
